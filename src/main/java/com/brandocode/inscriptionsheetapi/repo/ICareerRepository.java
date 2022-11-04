@@ -1,0 +1,12 @@
+package com.brandocode.inscriptionsheetapi.repo;
+
+import com.brandocode.inscriptionsheetapi.models.de.CareerDE;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ICareerRepository extends JpaRepository<CareerDE, Long> {
+    boolean existsByCareerCode(String careerCode);
+
+    void findCareerByName(String name);
+}
