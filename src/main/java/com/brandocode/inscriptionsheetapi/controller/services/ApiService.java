@@ -4,7 +4,7 @@ import com.brandocode.inscriptionsheetapi.controller.mappers.AssignmentApiMapper
 import com.brandocode.inscriptionsheetapi.controller.to.AssignmentTO;
 import com.brandocode.inscriptionsheetapi.controller.to.CareerTO;
 import com.brandocode.inscriptionsheetapi.controller.to.StudentTO;
-import com.brandocode.inscriptionsheetapi.enums.CareerDoesNotExistByName;
+import com.brandocode.inscriptionsheetapi.exceptions.CareerDoesNotExistByName;
 import com.brandocode.inscriptionsheetapi.exceptions.AssignmentDoesNotExistByName;
 import com.brandocode.inscriptionsheetapi.services.AssignmentService;
 import com.brandocode.inscriptionsheetapi.services.CareerService;

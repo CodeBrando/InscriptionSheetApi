@@ -1,4 +1,4 @@
-package com.brandocode.inscriptionsheetapi.enums;
+package com.brandocode.inscriptionsheetapi.exceptions;
 
 public class CareerDoesNotExistByName extends Exception{
     public CareerDoesNotExistByName(String message, Throwable error){
