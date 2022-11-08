@@ -1,6 +1,7 @@
 package com.brandocode.inscriptionsheetapi.controller.services;
 
 import com.brandocode.inscriptionsheetapi.controller.mappers.AssignmentApiMapper;
+import com.brandocode.inscriptionsheetapi.controller.mappers.CareerApiMapper;
 import com.brandocode.inscriptionsheetapi.controller.to.AssignmentTO;
 import com.brandocode.inscriptionsheetapi.controller.to.CareerTO;
 import com.brandocode.inscriptionsheetapi.controller.to.StudentTO;
@@ -40,7 +41,8 @@ public class ApiService {
         return careerTO;
     }
 
-    public StudentTO assignCareer(StudentTO student, CareerTO career) throws CareerDoesNotExistByName {
+    public StudentTO assignCareer(StudentTO student, String careerCode){
+        CareerTO career = CareerApiMapper.convertBOToTO(careerService.findCareerByCareerCode(careerCode));
         student.setCareer(career);
         return student;
     }
