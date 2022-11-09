@@ -73,11 +73,11 @@ public class StudentController implements IStudentController{
     }
 
     @Override
-    public ResponseEntity<ResponseTO> updateStudent(String studentCode){
+    public ResponseEntity<ResponseTO> updateStudent(StudentTO studentTO, String studentCode){
         log.info("STARTING TO UPDATE STUDENT...");
         ResponseEntity<ResponseTO> response;
         try{
-            studentService.updateStudent(studentService.findStudentByStudentCode(studentCode));
+            studentService.updateStudent(StudentApiMapper.convertTOToBO(studentTO), studentCode);
             response = new ResponseEntity<>(ResponseTO.builder().message(HttpStatus.OK.name()).build(), HttpStatus.OK);
             log.info("STUDENT UPDATED SUCCESSFULLY!");
         } catch(EntityNotFoundException e){
@@ -101,6 +101,4 @@ public class StudentController implements IStudentController{
         }
         return response;
     }
-
-
 }

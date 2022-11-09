@@ -1,5 +1,7 @@
 package com.brandocode.inscriptionsheetapi.services;
 
+import com.brandocode.inscriptionsheetapi.controller.mappers.CareerApiMapper;
+import com.brandocode.inscriptionsheetapi.controller.to.CareerTO;
 import com.brandocode.inscriptionsheetapi.models.bo.CareerBO;
 import com.brandocode.inscriptionsheetapi.models.mappers.CareerMapper;
 import com.brandocode.inscriptionsheetapi.repo.ICareerRepository;
@@ -35,5 +37,14 @@ public class CareerService {
     public CareerBO findCareerByCareerCode(String careerCode) throws EntityNotFoundException {
         return CareerMapper.convertDEToBO(repository.findCareerByCareerCode(careerCode)
                 .orElseThrow(() -> new EntityNotFoundException("Career with career code " +careerCode+ " does not exist.")));
+    }
+
+    public void updateCareer(CareerBO careerBO, String studentCode){
+        careerBO.setCareerCode(studentCode);
+        repository.save(CareerMapper.convertBOToDE(careerBO));
+    }
+
+    public void deleteCareer(String careerCode){
+        repository.delete(CareerMapper.convertBOToDE(findCareerByCareerCode(careerCode)));
     }
 }

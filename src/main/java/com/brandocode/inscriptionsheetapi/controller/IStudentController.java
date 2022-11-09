@@ -24,7 +24,8 @@ public interface IStudentController {
     })
     @Operation(summary = "Creates a new student")
     @PostMapping(value = "{/careerCode}" , consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
-    ResponseEntity<ResponseTO> createStudent(@ApiParam(value = "Student to create" ,required=true )@Valid @RequestBody StudentTO student, String careerCode);
+    ResponseEntity<ResponseTO> createStudent(@ApiParam(value = "Student to create" ,required=true )
+                                             @Valid @RequestBody StudentTO student, @PathVariable("studentCode") String careerCode);
 
 
     @ApiResponses(value = {
@@ -53,7 +54,8 @@ public interface IStudentController {
     })
     @Operation(summary = "Updates an existing student")
     @PutMapping(value = "/{studentCode}", consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
-    ResponseEntity<ResponseTO> updateStudent(@ApiParam(value = "Student to update", required = true) @Valid @RequestBody String studentCode);
+    ResponseEntity<ResponseTO> updateStudent(@ApiParam(value = "Student to update", required = true)
+                                             @Valid @RequestBody StudentTO student, @PathVariable("studentCode") String studentCode);
 
     @ApiResponses(value={
             @ApiResponse(responseCode = "202", description = "Deleted"),

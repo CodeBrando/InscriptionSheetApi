@@ -24,8 +24,12 @@ public interface ICareerController {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @Operation(summary = "Creates a new career")
-    @PostMapping(consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
-    ResponseEntity<ResponseTO> createCareer(@ApiParam(value = "Career to create" ,required=true )@Valid @RequestBody CareerTO career);
+    @PostMapping(value = "/{assignment1}/{assignment2}/{assignment3}", consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
+    ResponseEntity<ResponseTO> createCareer(@ApiParam(value = "Career to create" ,required=true)
+                                            @Valid @RequestBody CareerTO career,
+                                            @PathVariable("assignment1") String assignment1,
+    @PathVariable("assignment2") String assignment2,
+    @PathVariable("assignment3") String assignment3);
 
 
     @ApiResponses(value = {
@@ -45,7 +49,7 @@ public interface ICareerController {
     })
     @Operation(summary = "Finds all careers")
     @GetMapping(produces = APPLICATION_JSON)
-    ResponseEntity<?> getCareers();
+    ResponseEntity<?> findAllCareers();
 
     @ApiResponses(value={
             @ApiResponse(responseCode = "202", description = "Updated"),
@@ -54,7 +58,8 @@ public interface ICareerController {
     })
     @Operation(summary = "Updates an existing career")
     @PutMapping(value = "/{careerCode}", consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
-    ResponseEntity<ResponseTO> updateCareer(@ApiParam(value = "Career to update", required = true) @Valid @RequestBody CareerTO career);
+    ResponseEntity<ResponseTO> updateCareer(@ApiParam(value = "Career to update", required = true) @Valid @RequestBody CareerTO career,
+                                            @PathVariable("careerCode") String careerCode);
 
     @ApiResponses(value={
             @ApiResponse(responseCode = "202", description = "Deleted"),
