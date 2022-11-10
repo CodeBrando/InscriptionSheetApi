@@ -34,7 +34,7 @@ public interface IAssignmentController {
     })
     @Operation(summary = "Obtain the assignment with the given assignment code")
     @GetMapping(value = "/{assignmentCode}", produces = APPLICATION_JSON)
-    ResponseEntity<?> getAssignmentByAssignmentCode(@ApiParam(value = "Assignment code of the assignment to find")
+    ResponseEntity<?> findAssignmentByAssignmentCode(@ApiParam(value = "Assignment code of the assignment to find")
                                                     @PathVariable("assignmentCode") String assignmentCode);
 
     @ApiResponses(value={
@@ -44,7 +44,7 @@ public interface IAssignmentController {
     })
     @Operation(summary = "Finds all assignments")
     @GetMapping(produces = APPLICATION_JSON)
-    ResponseEntity<?> getAssignments();
+    ResponseEntity<?> findAllAssignments();
 
     @ApiResponses(value={
             @ApiResponse(responseCode = "202", description = "Updated"),
@@ -53,7 +53,8 @@ public interface IAssignmentController {
     })
     @Operation(summary = "Updates an existing assignment")
     @PutMapping(value = "/{assignmentCode}", consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
-    ResponseEntity<ResponseTO> updateAssignment(@ApiParam(value = "Assignment to update", required = true) @Valid @RequestBody AssignmentTO assignment);
+    ResponseEntity<ResponseTO> updateAssignment(@ApiParam(value = "Assignment to update", required = true) @Valid @RequestBody AssignmentTO assignment,
+                                                @PathVariable("assignmentCode") String assignmentCode);
 
     @ApiResponses(value={
             @ApiResponse(responseCode = "202", description = "Deleted"),
@@ -62,5 +63,5 @@ public interface IAssignmentController {
     })
     @Operation(summary = "Deletes an existing assignment with a given assignment code")
     @DeleteMapping(value = "/{assignmentCode}")
-    ResponseEntity<?> deleteCareer(@ApiParam(value = "Assignment to delete") @PathVariable("assignmentCode") String assignmentCode);
+    ResponseEntity<?> deleteAssignment(@ApiParam(value = "Assignment to delete") @PathVariable("assignmentCode") String assignmentCode);
 }

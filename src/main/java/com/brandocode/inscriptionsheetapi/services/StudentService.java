@@ -35,8 +35,10 @@ public class StudentService {
        return StudentMapper.convertDEListToBOList(repository.findAll());
     }
 
-    public void updateStudent(StudentBO studentBO, String careerCode){
-        studentBO.setStudentCode(careerCode);
+    public void updateStudent(StudentBO studentBO, String studentCode){
+        StudentBO studentToUpdate = findStudentByStudentCode(studentCode);
+        studentBO.setId(studentToUpdate.getId());
+        studentBO.setStudentCode(studentCode);
         repository.save(StudentMapper.convertBOToDE(studentBO));
     }
 

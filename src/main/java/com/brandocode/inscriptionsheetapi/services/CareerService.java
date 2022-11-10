@@ -39,8 +39,10 @@ public class CareerService {
                 .orElseThrow(() -> new EntityNotFoundException("Career with career code " +careerCode+ " does not exist.")));
     }
 
-    public void updateCareer(CareerBO careerBO, String studentCode){
-        careerBO.setCareerCode(studentCode);
+    public void updateCareer(CareerBO careerBO, String careerCode){
+        CareerBO careerToUpdate = findCareerByCareerCode(careerCode);
+        careerBO.setId(careerToUpdate.getId());
+        careerBO.setCareerCode(careerCode);
         repository.save(CareerMapper.convertBOToDE(careerBO));
     }
 
