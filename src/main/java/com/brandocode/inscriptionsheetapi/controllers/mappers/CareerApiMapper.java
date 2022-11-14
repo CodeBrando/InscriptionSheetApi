@@ -1,8 +1,7 @@
-package com.brandocode.inscriptionsheetapi.controller.mappers;
+package com.brandocode.inscriptionsheetapi.controllers.mappers;
 
-import com.brandocode.inscriptionsheetapi.controller.to.CareerTO;
+import com.brandocode.inscriptionsheetapi.controllers.to.CareerTO;
 import com.brandocode.inscriptionsheetapi.models.bo.CareerBO;
-import com.brandocode.inscriptionsheetapi.models.mappers.AssignmentMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +13,8 @@ public class CareerApiMapper {
         return CareerBO.builder()
                 .id(Objects.isNull(careerTO.getId()) ? null : careerTO.getId())
                 .name(careerTO.getName())
+                .careerCode(careerTO.getCareerCode())
+                .assignments(AssignmentApiMapper.convertTOListToBOList(careerTO.getAssignments()))
                 .build();
     }
 
@@ -30,5 +31,11 @@ public class CareerApiMapper {
         List<CareerTO> careersTO = new ArrayList<>();
         careersBO.forEach(careerBO -> careersTO.add(convertBOToTO(careerBO)));
         return careersTO;
+    }
+
+    public static List<CareerBO> convertTOListToBOList(List<CareerTO> careersTO){
+        List<CareerBO> careersBO = new ArrayList<>();
+        careersTO.forEach(careerTO -> careersBO.add(convertTOToBO(careerTO)));
+        return careersBO;
     }
 }

@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "ASSIGNMENT")
+@Table(name = "ASSIGNMENT_DATA")
 public class AssignmentDE {
 
     @Id
@@ -23,6 +23,6 @@ public class AssignmentDE {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "ASSIGNMENT CODE")
+    @Column(name = "ASSIGNMENT_CODE")
     private String assignmentCode;
 }

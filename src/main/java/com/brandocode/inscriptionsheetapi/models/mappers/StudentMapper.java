@@ -40,4 +40,10 @@ public class StudentMapper {
         studentsDE.forEach(studentDE -> studentsBO.add(convertDEToBO(studentDE)));
         return studentsBO;
     }
+
+    public static List<StudentDE> convertBOListToDEList(List<StudentBO> studentsBO){
+        List<StudentDE> studentsDE = new ArrayList<>();
+        studentsBO.forEach(studentBO -> studentsDE.add(convertBOToDE(studentBO)));
+        return studentsDE;
+    }
 }

@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface IAssignmentRepository extends JpaRepository<AssignmentDE, Long> {
-    boolean assignmentExistsByAssignmentCode(String assignmentCode);
+
+    Optional<AssignmentDE> findAssignmentByName(String name);
+
     Optional<AssignmentDE> findAssignmentByAssignmentCode(String assignmentCode);
 }
 

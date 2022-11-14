@@ -1,6 +1,6 @@
-package com.brandocode.inscriptionsheetapi.controller.mappers;
+package com.brandocode.inscriptionsheetapi.controllers.mappers;
 
-import com.brandocode.inscriptionsheetapi.controller.to.AssignmentTO;
+import com.brandocode.inscriptionsheetapi.controllers.to.AssignmentTO;
 import com.brandocode.inscriptionsheetapi.models.bo.AssignmentBO;
 
 import java.util.ArrayList;
@@ -21,6 +21,7 @@ public class AssignmentApiMapper {
         return AssignmentBO.builder()
                 .id(Objects.isNull(assignmentTO.getId()) ? null : assignmentTO.getId())
                 .name(assignmentTO.getName())
+                .assignmentCode(assignmentTO.getAssignmentCode())
                 .build();
     }
 
@@ -28,5 +29,11 @@ public class AssignmentApiMapper {
         List<AssignmentTO> assignmentsTO = new ArrayList<>();
         assignmentsBO.forEach(assignmentBO -> assignmentsTO.add(convertBOToTO(assignmentBO)));
         return assignmentsTO;
+    }
+
+    public static List<AssignmentBO> convertTOListToBOList(List<AssignmentTO> assignmentsTO){
+        List<AssignmentBO> assignmentsBO = new ArrayList<>();
+        assignmentsTO.forEach(assignmentTO -> assignmentsBO.add(convertTOToBO(assignmentTO)));
+        return assignmentsBO;
     }
 }

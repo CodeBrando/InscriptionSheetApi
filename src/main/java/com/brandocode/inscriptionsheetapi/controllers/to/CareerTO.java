@@ -1,4 +1,4 @@
-package com.brandocode.inscriptionsheetapi.controller.to;
+package com.brandocode.inscriptionsheetapi.controllers.to;
 
 import lombok.Builder;
 import lombok.Data;

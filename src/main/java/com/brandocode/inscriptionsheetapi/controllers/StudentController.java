@@ -1,12 +1,11 @@
-package com.brandocode.inscriptionsheetapi.controller;
+package com.brandocode.inscriptionsheetapi.controllers;
 
 
-import com.brandocode.inscriptionsheetapi.controller.mappers.StudentApiMapper;
-import com.brandocode.inscriptionsheetapi.controller.services.ApiService;
-import com.brandocode.inscriptionsheetapi.controller.to.ResponseTO;
-import com.brandocode.inscriptionsheetapi.controller.to.StudentTO;
+import com.brandocode.inscriptionsheetapi.controllers.mappers.StudentApiMapper;
+import com.brandocode.inscriptionsheetapi.controllers.services.ApiService;
+import com.brandocode.inscriptionsheetapi.controllers.to.ResponseTO;
+import com.brandocode.inscriptionsheetapi.controllers.to.StudentTO;
 import com.brandocode.inscriptionsheetapi.services.StudentService;
-import io.swagger.models.Response;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

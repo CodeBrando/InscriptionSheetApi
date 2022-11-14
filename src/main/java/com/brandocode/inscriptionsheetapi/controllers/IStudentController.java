@@ -1,8 +1,7 @@
-package com.brandocode.inscriptionsheetapi.controller;
+package com.brandocode.inscriptionsheetapi.controllers;
 
-
-import com.brandocode.inscriptionsheetapi.controller.to.CareerTO;
-import com.brandocode.inscriptionsheetapi.controller.to.ResponseTO;
+import com.brandocode.inscriptionsheetapi.controllers.to.ResponseTO;
+import com.brandocode.inscriptionsheetapi.controllers.to.StudentTO;
 import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -13,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RequestMapping("/api/v1/careers")
-public interface ICareerController {
+@RequestMapping("/api/v1/students")
+public interface IStudentController {
 
     String APPLICATION_JSON = "application/json";
 
@@ -23,13 +22,10 @@ public interface ICareerController {
             @ApiResponse(responseCode = "400", description = "Bad request"),
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
-    @Operation(summary = "Creates a new career")
-    @PostMapping(value = "/{assignment1}/{assignment2}/{assignment3}", consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
-    ResponseEntity<ResponseTO> createCareer(@ApiParam(value = "Career to create" ,required=true)
-                                            @Valid @RequestBody CareerTO career,
-                                            @PathVariable("assignment1") String assignment1,
-    @PathVariable("assignment2") String assignment2,
-    @PathVariable("assignment3") String assignment3);
+    @Operation(summary = "Creates a new student")
+    @PostMapping(value = "/{careerCode}" , consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
+    ResponseEntity<ResponseTO> createStudent(@ApiParam(value = "Student to create" ,required=true )
+                                             @Valid @RequestBody StudentTO student, @PathVariable("studentCode") String careerCode);
 
 
     @ApiResponses(value = {
@@ -38,35 +34,36 @@ public interface ICareerController {
             @ApiResponse(responseCode = "404", description = "Not found"),
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
-    @Operation(summary = "Obtain the career with the given career code")
-    @GetMapping(value = "/{careerCode}", produces = APPLICATION_JSON)
-    ResponseEntity<?> getCareerByCareerCode(@ApiParam(value = "Career code of the career to find") @PathVariable("careerCode") String careerCode);
+    @Operation(summary = "Obtain the student with the given student code")
+    @GetMapping(value = "/{studentCode}", produces = APPLICATION_JSON)
+    ResponseEntity<?> findStudentByStudentCode(@ApiParam(value = "Student code of the student to find") @PathVariable("studentCode") String studentCode);
 
     @ApiResponses(value={
             @ApiResponse(responseCode = "202", description = "Created"),
             @ApiResponse(responseCode = "400", description = "Bad request"),
             @ApiResponse(responseCode = "500", description = "Internal Server error")
     })
-    @Operation(summary = "Finds all careers")
+    @Operation(summary = "Finds all students")
     @GetMapping(produces = APPLICATION_JSON)
-    ResponseEntity<?> findAllCareers();
+    ResponseEntity<?> findAllStudents();
 
     @ApiResponses(value={
             @ApiResponse(responseCode = "202", description = "Updated"),
             @ApiResponse(responseCode = "400", description = "Bad request"),
             @ApiResponse(responseCode = "500", description = "Internal Server error")
     })
-    @Operation(summary = "Updates an existing career")
-    @PutMapping(value = "/{careerCode}", consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
-    ResponseEntity<ResponseTO> updateCareer(@ApiParam(value = "Career to update", required = true) @Valid @RequestBody CareerTO career,
-                                            @PathVariable("careerCode") String careerCode);
+    @Operation(summary = "Updates an existing student")
+    @PutMapping(value = "/{studentCode}", consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
+    ResponseEntity<ResponseTO> updateStudent(@ApiParam(value = "Student to update", required = true)
+                                             @Valid @RequestBody StudentTO student, @PathVariable("studentCode") String studentCode);
 
     @ApiResponses(value={
             @ApiResponse(responseCode = "202", description = "Deleted"),
             @ApiResponse(responseCode = "400", description = "Bad request"),
             @ApiResponse(responseCode = "500", description = "Internal Server error")
     })
-    @Operation(summary = "Deletes an existing career")
-    @DeleteMapping(value = "/{careerCode}")
-    ResponseEntity<?> deleteCareer(@ApiParam(value = "Career to delete") @PathVariable("careerCode") String careerCode);
+    @Operation(summary = "Deletes an existing student")
+    @DeleteMapping(value = "/{studentCode}")
+    ResponseEntity<?> deleteStudent(@ApiParam(value = "Student to delete") @PathVariable("studentCode") String studentCode);
+
 }

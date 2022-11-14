@@ -25,10 +25,10 @@ public class CareerDE {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "CAREER CODE")
+    @Column(name = "CAREER_CODE")
     private String careerCode;
 
     @OneToMany
-    @JoinColumn(name = "ASSIGNMENTS", referencedColumnName = "ID")
+    @JoinColumn(name = "ASSIGNMENT_DATA", referencedColumnName = "ID")
     private List<AssignmentDE> assignments;
 }

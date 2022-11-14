@@ -1,7 +1,5 @@
 package com.brandocode.inscriptionsheetapi.services;
 
-import com.brandocode.inscriptionsheetapi.controller.mappers.CareerApiMapper;
-import com.brandocode.inscriptionsheetapi.controller.to.CareerTO;
 import com.brandocode.inscriptionsheetapi.models.bo.CareerBO;
 import com.brandocode.inscriptionsheetapi.models.mappers.CareerMapper;
 import com.brandocode.inscriptionsheetapi.repo.ICareerRepository;

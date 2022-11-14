@@ -1,11 +1,10 @@
-package com.brandocode.inscriptionsheetapi.controller;
+package com.brandocode.inscriptionsheetapi.controllers;
 
-import com.brandocode.inscriptionsheetapi.controller.mappers.CareerApiMapper;
-import com.brandocode.inscriptionsheetapi.controller.services.ApiService;
-import com.brandocode.inscriptionsheetapi.controller.to.CareerTO;
-import com.brandocode.inscriptionsheetapi.controller.to.ResponseTO;
+import com.brandocode.inscriptionsheetapi.controllers.mappers.CareerApiMapper;
+import com.brandocode.inscriptionsheetapi.controllers.services.ApiService;
+import com.brandocode.inscriptionsheetapi.controllers.to.CareerTO;
+import com.brandocode.inscriptionsheetapi.controllers.to.ResponseTO;
 import com.brandocode.inscriptionsheetapi.exceptions.AssignmentDoesNotExistByName;
-import com.brandocode.inscriptionsheetapi.models.mappers.CareerMapper;
 import com.brandocode.inscriptionsheetapi.services.CareerService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;

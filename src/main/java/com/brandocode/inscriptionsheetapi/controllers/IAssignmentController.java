@@ -1,7 +1,7 @@
-package com.brandocode.inscriptionsheetapi.controller;
+package com.brandocode.inscriptionsheetapi.controllers;
 
-import com.brandocode.inscriptionsheetapi.controller.to.AssignmentTO;
-import com.brandocode.inscriptionsheetapi.controller.to.ResponseTO;
+import com.brandocode.inscriptionsheetapi.controllers.to.AssignmentTO;
+import com.brandocode.inscriptionsheetapi.controllers.to.ResponseTO;
 import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;

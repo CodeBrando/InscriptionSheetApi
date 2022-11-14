@@ -1,11 +1,10 @@
-package com.brandocode.inscriptionsheetapi.controller.services;
+package com.brandocode.inscriptionsheetapi.controllers.services;
 
-import com.brandocode.inscriptionsheetapi.controller.mappers.AssignmentApiMapper;
-import com.brandocode.inscriptionsheetapi.controller.mappers.CareerApiMapper;
-import com.brandocode.inscriptionsheetapi.controller.to.AssignmentTO;
-import com.brandocode.inscriptionsheetapi.controller.to.CareerTO;
-import com.brandocode.inscriptionsheetapi.controller.to.StudentTO;
-import com.brandocode.inscriptionsheetapi.exceptions.CareerDoesNotExistByName;
+import com.brandocode.inscriptionsheetapi.controllers.mappers.AssignmentApiMapper;
+import com.brandocode.inscriptionsheetapi.controllers.mappers.CareerApiMapper;
+import com.brandocode.inscriptionsheetapi.controllers.to.AssignmentTO;
+import com.brandocode.inscriptionsheetapi.controllers.to.CareerTO;
+import com.brandocode.inscriptionsheetapi.controllers.to.StudentTO;
 import com.brandocode.inscriptionsheetapi.exceptions.AssignmentDoesNotExistByName;
 import com.brandocode.inscriptionsheetapi.services.AssignmentService;
 import com.brandocode.inscriptionsheetapi.services.CareerService;

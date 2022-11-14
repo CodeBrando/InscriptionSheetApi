@@ -1,9 +1,9 @@
-package com.brandocode.inscriptionsheetapi.controller;
+package com.brandocode.inscriptionsheetapi.controllers;
 
-import com.brandocode.inscriptionsheetapi.controller.mappers.AssignmentApiMapper;
-import com.brandocode.inscriptionsheetapi.controller.services.ApiService;
-import com.brandocode.inscriptionsheetapi.controller.to.AssignmentTO;
-import com.brandocode.inscriptionsheetapi.controller.to.ResponseTO;
+import com.brandocode.inscriptionsheetapi.controllers.mappers.AssignmentApiMapper;
+import com.brandocode.inscriptionsheetapi.controllers.services.ApiService;
+import com.brandocode.inscriptionsheetapi.controllers.to.AssignmentTO;
+import com.brandocode.inscriptionsheetapi.controllers.to.ResponseTO;
 import com.brandocode.inscriptionsheetapi.services.AssignmentService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

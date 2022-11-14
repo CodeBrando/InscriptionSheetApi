@@ -24,22 +24,22 @@ public class StudentDE {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "LAST NAME")
+    @Column(name = "LAST_NAME")
     private String lastName;
 
     @Column(name = "EMAIL")
     private String email;
 
-    @Column(name = "PHONE NUMBER")
+    @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
-    @Column(name = "STUDENT STATUS")
+    @Column(name = "STUDENT_STATUS")
     private String studentStatus;
 
-    @Column(name = "STUDENT CODE")
+    @Column(name = "STUDENT_CODE")
     private String studentCode;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "CAREER", referencedColumnName = "ID")
     private CareerDE career;
 }

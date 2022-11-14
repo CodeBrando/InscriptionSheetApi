@@ -1,6 +1,6 @@
-package com.brandocode.inscriptionsheetapi.controller.mappers;
+package com.brandocode.inscriptionsheetapi.controllers.mappers;
 
-import com.brandocode.inscriptionsheetapi.controller.to.StudentTO;
+import com.brandocode.inscriptionsheetapi.controllers.to.StudentTO;
 import com.brandocode.inscriptionsheetapi.models.bo.StudentBO;
 
 import java.util.ArrayList;
@@ -29,6 +29,8 @@ public class StudentApiMapper {
                 .lastName(studentTO.getLastName())
                 .email(studentTO.getEmail())
                 .phoneNumber(studentTO.getPhoneNumber())
+                .studentStatus(studentTO.getStudentStatus())
+                .studentCode(studentTO.getStudentCode())
                 .career(CareerApiMapper.convertTOToBO(studentTO.getCareer()))
                 .build();
     }
@@ -39,4 +41,9 @@ public class StudentApiMapper {
         return studentsTO;
     }
 
+    public static List<StudentBO> convertTOListToBOList(List<StudentTO> studentsTO){
+        List<StudentBO> studentsBO = new ArrayList<>();
+        studentsTO.forEach(studentTO -> studentsBO.add(convertTOToBO(studentTO)));
+        return studentsBO;
+    }
 }

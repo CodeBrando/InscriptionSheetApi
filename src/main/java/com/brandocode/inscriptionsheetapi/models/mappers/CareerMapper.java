@@ -32,4 +32,10 @@ public class CareerMapper {
         careersDE.forEach(careerDE -> careersBO.add(convertDEToBO(careerDE)));
         return careersBO;
     }
+
+    public static List<CareerDE> convertBOListToDEList(List<CareerBO> careersBO){
+        List<CareerDE> careersDE = new ArrayList<>();
+        careersBO.forEach(careerBO -> careersDE.add(convertBOToDE(careerBO)));
+        return careersDE;
+    }
 }

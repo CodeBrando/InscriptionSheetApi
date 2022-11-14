@@ -19,13 +19,18 @@ public class AssignmentService {
 
     public void saveAssignment(AssignmentBO assignmentBO) throws EntityExistsException {
         assignmentBO.setAssignmentCode(UUID.randomUUID().toString());
-        if(repository.assignmentExistsByAssignmentCode(assignmentBO.getAssignmentCode())){
+        if(repository.existsById(assignmentBO.getId())){
             throw new EntityExistsException("Assignment with assignment code " + assignmentBO.getAssignmentCode() + " already exists");
         }
         repository.save(AssignmentMapper.convertBOToDE(assignmentBO));
     }
      public List<AssignmentBO> findAllAssignments(){
         return AssignmentMapper.convertDEListToBOList(repository.findAll());
+     }
+
+     public AssignmentBO findAssignment(String name){
+        return AssignmentMapper.convertDEToBO(repository.findAssignmentByName(name)
+                .orElseThrow(() -> new EntityNotFoundException("Assignment with name " + name+ "does not exist.")));
      }
 
      public AssignmentBO findAssignmentByAssignmentCode(String assignmentCode){
@@ -43,4 +48,6 @@ public class AssignmentService {
      public void deleteAssignment(String assignmentCode){
         repository.delete(AssignmentMapper.convertBOToDE(findAssignmentByAssignmentCode(assignmentCode)));
      }
+
+
 }
