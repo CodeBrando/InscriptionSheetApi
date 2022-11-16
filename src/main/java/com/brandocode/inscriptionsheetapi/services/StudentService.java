@@ -18,7 +18,7 @@ public class StudentService {
     IStudentRepository repository;
 
     public void saveStudent(StudentBO studentBO) throws EntityExistsException {
-        studentBO.setStudentCode(UUID.randomUUID().toString());
+
         if(repository.existsByStudentCode(studentBO.getStudentCode())){
             throw new EntityExistsException("Student with student code " + studentBO.getStudentCode() + " already exists");
         }
@@ -42,8 +42,7 @@ public class StudentService {
         repository.save(StudentMapper.convertBOToDE(studentBO));
     }
 
-    public void deleteStudent(StudentBO studentBO){
-        repository.delete(StudentMapper.convertBOToDE(studentBO));
+    public void deleteStudent(String studentCode){
+        repository.delete(StudentMapper.convertBOToDE(findStudentByStudentCode(studentCode)));
     }
-
 }

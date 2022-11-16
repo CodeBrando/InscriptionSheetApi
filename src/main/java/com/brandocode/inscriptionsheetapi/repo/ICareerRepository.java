@@ -12,6 +12,6 @@ public interface ICareerRepository extends JpaRepository<CareerDE, Long> {
 
     void findCareerByName(String name);
 
-    Optional<CareerDE> findCareerByCareerCode(String careerCode);
+    Optional<CareerDE> findByCareerCode(String careerCode);
 
 }

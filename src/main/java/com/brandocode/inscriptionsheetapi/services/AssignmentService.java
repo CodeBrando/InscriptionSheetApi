@@ -1,7 +1,6 @@
 package com.brandocode.inscriptionsheetapi.services;
 
 import com.brandocode.inscriptionsheetapi.models.bo.AssignmentBO;
-import com.brandocode.inscriptionsheetapi.models.de.AssignmentDE;
 import com.brandocode.inscriptionsheetapi.models.mappers.AssignmentMapper;
 import com.brandocode.inscriptionsheetapi.repo.IAssignmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class AssignmentService {
@@ -18,8 +16,7 @@ public class AssignmentService {
     IAssignmentRepository repository;
 
     public void saveAssignment(AssignmentBO assignmentBO) throws EntityExistsException {
-        assignmentBO.setAssignmentCode(UUID.randomUUID().toString());
-        if(repository.existsById(assignmentBO.getId())){
+        if(repository.existsByAssignmentCode(assignmentBO.getAssignmentCode())){
             throw new EntityExistsException("Assignment with assignment code " + assignmentBO.getAssignmentCode() + " already exists");
         }
         repository.save(AssignmentMapper.convertBOToDE(assignmentBO));
@@ -34,7 +31,7 @@ public class AssignmentService {
      }
 
      public AssignmentBO findAssignmentByAssignmentCode(String assignmentCode){
-        return AssignmentMapper.convertDEToBO(repository.findAssignmentByAssignmentCode(assignmentCode)
+        return AssignmentMapper.convertDEToBO(repository.findByAssignmentCode(assignmentCode)
                 .orElseThrow(() -> new EntityNotFoundException("Assignment with name " + assignmentCode + "does not exist")));
      }
 

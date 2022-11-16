@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class CareerService {
@@ -17,7 +16,6 @@ public class CareerService {
     ICareerRepository repository;
 
     public void saveCareer(CareerBO careerBO) throws EntityExistsException {
-        careerBO.setCareerCode(UUID.randomUUID().toString());
         if(repository.existsByCareerCode(careerBO.getCareerCode())){
             throw new EntityExistsException("Career with code " + careerBO.getCareerCode() + " already exists");
         }
@@ -33,7 +31,7 @@ public class CareerService {
     }
 
     public CareerBO findCareerByCareerCode(String careerCode) throws EntityNotFoundException {
-        return CareerMapper.convertDEToBO(repository.findCareerByCareerCode(careerCode)
+        return CareerMapper.convertDEToBO(repository.findByCareerCode(careerCode)
                 .orElseThrow(() -> new EntityNotFoundException("Career with career code " +careerCode+ " does not exist.")));
     }
 

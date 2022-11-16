@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @Log4j2
@@ -32,6 +33,7 @@ public class StudentController implements IStudentController{
         ResponseEntity<ResponseTO> response;
         try {
             apiService.assignCareer(student, careerCode);
+            student.setStudentCode(UUID.randomUUID().toString());
             response = new ResponseEntity<>(ResponseTO.builder().message(HttpStatus.CREATED.name()).build(), HttpStatus.CREATED);
             log.info("STUDENT CREATED SUCCESSFULLY!");
         } catch(EntityExistsException e){
@@ -91,7 +93,7 @@ public class StudentController implements IStudentController{
         log.info("STARTING TO DELETE STUDENT...");
         ResponseEntity<ResponseTO> response;
         try{
-            studentService.deleteStudent(studentService.findStudentByStudentCode(studentCode));
+            studentService.deleteStudent(studentCode);
             response = new ResponseEntity<>(ResponseTO.builder().message(HttpStatus.OK.name()).build(), HttpStatus.OK);
             log.info("STUDENT DELETED SUCCESSFULLY");
         } catch(EntityNotFoundException e){

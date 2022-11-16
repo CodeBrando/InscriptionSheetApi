@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @Log4j2
@@ -29,6 +30,7 @@ public class AssignmentController implements IAssignmentController{
         log.info("STARTING TO CREATE ASSIGNMENT...");
         ResponseEntity<ResponseTO> response;
         try{
+            assignmentTO.setAssignmentCode(UUID.randomUUID().toString());
             assignmentService.saveAssignment(AssignmentApiMapper.convertTOToBO(assignmentTO));
             response = new ResponseEntity<>(ResponseTO.builder().message(HttpStatus.CREATED.name()).build(), HttpStatus.CREATED);
             log.info("ASSIGNMENT CREATED SUCCESSFULLY!");

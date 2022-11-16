@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @Log4j2
@@ -31,6 +32,7 @@ public class CareerController implements ICareerController{
         ResponseEntity<ResponseTO> response;
         try{
             apiService.assignAssignments(careerTO, assignment1, assignment2, assignment3);
+            careerTO.setCareerCode(UUID.randomUUID().toString());
             careerService.saveCareer(CareerApiMapper.convertTOToBO(careerTO));
             response = new ResponseEntity<>(ResponseTO.builder().message(HttpStatus.OK.name()).build(), HttpStatus.OK);
         } catch (AssignmentDoesNotExistByName e) {

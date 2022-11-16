@@ -9,6 +9,8 @@ public interface IAssignmentRepository extends JpaRepository<AssignmentDE, Long>
 
     Optional<AssignmentDE> findAssignmentByName(String name);
 
-    Optional<AssignmentDE> findAssignmentByAssignmentCode(String assignmentCode);
+    Optional<AssignmentDE> findByAssignmentCode(String assignmentCode);
+
+    boolean existsByAssignmentCode(String careerCode);
 }
 
