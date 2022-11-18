@@ -1,9 +1,7 @@
 package com.brandocode.inscriptionsheetapi.services;
 
 import com.brandocode.inscriptionsheetapi.TestUtils;
-import com.brandocode.inscriptionsheetapi.models.de.CareerDE;
 import com.brandocode.inscriptionsheetapi.models.de.StudentDE;
-import com.brandocode.inscriptionsheetapi.models.mappers.CareerMapper;
 import com.brandocode.inscriptionsheetapi.models.mappers.StudentMapper;
 import com.brandocode.inscriptionsheetapi.repo.IStudentRepository;
 import org.junit.jupiter.api.Test;

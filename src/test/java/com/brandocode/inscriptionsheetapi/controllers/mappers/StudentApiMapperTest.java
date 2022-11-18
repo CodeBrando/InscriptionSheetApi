@@ -3,9 +3,6 @@ package com.brandocode.inscriptionsheetapi.controllers.mappers;
 import com.brandocode.inscriptionsheetapi.TestUtils;
 import com.brandocode.inscriptionsheetapi.controllers.to.StudentTO;
 import com.brandocode.inscriptionsheetapi.models.bo.StudentBO;
-import com.brandocode.inscriptionsheetapi.models.de.StudentDE;
-import com.brandocode.inscriptionsheetapi.models.mappers.CareerMapper;
-import com.brandocode.inscriptionsheetapi.models.mappers.StudentMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -37,7 +34,7 @@ public class StudentApiMapperTest {
         assertEquals(expectedBO.getPhoneNumber(), resultTO.getPhoneNumber());
         assertEquals(expectedBO.getStudentStatus(), resultTO.getStudentStatus());
         assertEquals(expectedBO.getStudentCode(), resultTO.getStudentCode());
-        //assertEquals(expectedBO.getCareer(), CareerApiMapper.convertTOToBO(resultTO.getCareer()));
+        assertEquals(expectedBO.getCareer(), CareerApiMapper.convertTOToBO(resultTO.getCareer()));
     }
 
     @Test

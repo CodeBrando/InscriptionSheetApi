@@ -27,12 +27,12 @@ public class AssignmentService {
 
      public AssignmentBO findAssignment(String name){
         return AssignmentMapper.convertDEToBO(repository.findAssignmentByName(name)
-                .orElseThrow(() -> new EntityNotFoundException("Assignment with name " + name+ "does not exist.")));
+                .orElseThrow(() -> new EntityNotFoundException("Assignment with name " +name+ " does not exist.")));
      }
 
      public AssignmentBO findAssignmentByAssignmentCode(String assignmentCode){
         return AssignmentMapper.convertDEToBO(repository.findByAssignmentCode(assignmentCode)
-                .orElseThrow(() -> new EntityNotFoundException("Assignment with name " + assignmentCode + "does not exist")));
+                .orElseThrow(() -> new EntityNotFoundException("Assignment with name " + assignmentCode + " does not exist")));
      }
 
      public void updateAssignment(AssignmentBO assignmentBO, String assignmentCode){

@@ -105,4 +105,28 @@ public class TestUtils {
                 .assignmentCode("assignmentCode")
                 .build();
     }
+
+    public static AssignmentDE getFirstAssignmentUtil(){
+        return AssignmentDE.builder()
+                .id(1L)
+                .name("First assignment")
+                .assignmentCode("firstAssignmentCode")
+                .build();
+    }
+
+    public static AssignmentDE getSecondAssignmentUtil(){
+        return AssignmentDE.builder()
+                .id(2L)
+                .name("Second assignment")
+                .assignmentCode("secondAssignmentCode")
+                .build();
+    }
+
+    public static AssignmentDE getThirdAssignmentUtil(){
+        return AssignmentDE.builder()
+                .id(3L)
+                .name("Third assignment")
+                .assignmentCode("thirdAssignmentCode")
+                .build();
+    }
 }

@@ -2,11 +2,8 @@ package com.brandocode.inscriptionsheetapi.services;
 
 import com.brandocode.inscriptionsheetapi.TestUtils;
 import com.brandocode.inscriptionsheetapi.models.de.AssignmentDE;
-import com.brandocode.inscriptionsheetapi.models.de.StudentDE;
 import com.brandocode.inscriptionsheetapi.models.mappers.AssignmentMapper;
-import com.brandocode.inscriptionsheetapi.models.mappers.StudentMapper;
 import com.brandocode.inscriptionsheetapi.repo.IAssignmentRepository;
-import com.brandocode.inscriptionsheetapi.repo.ICareerRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -16,7 +13,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
-
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
