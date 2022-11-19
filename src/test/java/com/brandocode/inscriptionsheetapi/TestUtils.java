@@ -2,6 +2,7 @@ package com.brandocode.inscriptionsheetapi;
 
 import com.brandocode.inscriptionsheetapi.controllers.to.AssignmentTO;
 import com.brandocode.inscriptionsheetapi.controllers.to.CareerTO;
+import com.brandocode.inscriptionsheetapi.controllers.to.ResponseTO;
 import com.brandocode.inscriptionsheetapi.controllers.to.StudentTO;
 import com.brandocode.inscriptionsheetapi.enums.StudentStatusEnum;
 import com.brandocode.inscriptionsheetapi.models.bo.AssignmentBO;
@@ -10,6 +11,7 @@ import com.brandocode.inscriptionsheetapi.models.bo.StudentBO;
 import com.brandocode.inscriptionsheetapi.models.de.AssignmentDE;
 import com.brandocode.inscriptionsheetapi.models.de.CareerDE;
 import com.brandocode.inscriptionsheetapi.models.de.StudentDE;
+import org.springframework.http.HttpStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,4 +131,17 @@ public class TestUtils {
                 .assignmentCode("thirdAssignmentCode")
                 .build();
     }
+
+    public static ResponseTO getCreatedResponseTO(){
+        return ResponseTO.builder()
+                .message(HttpStatus.CREATED.name())
+                .build();
+    }
+
+    public static ResponseTO getOKResponseTO(){
+        return ResponseTO.builder()
+                .message(HttpStatus.OK.name())
+                .build();
+    }
+
 }
