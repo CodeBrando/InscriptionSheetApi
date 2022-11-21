@@ -4,11 +4,10 @@ import com.brandocode.inscriptionsheetapi.controllers.to.AssignmentTO;
 import com.brandocode.inscriptionsheetapi.controllers.to.ResponseTO;
 import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.*; //esta aca el @requestBody
 
 import javax.validation.Valid;
 @RequestMapping("/api/v1/assignments")
@@ -38,7 +37,7 @@ public interface IAssignmentController {
                                                     @PathVariable("assignmentCode") String assignmentCode);
 
     @ApiResponses(value={
-            @ApiResponse(responseCode = "202", description = "Created"),
+            @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "400", description = "Bad request"),
             @ApiResponse(responseCode = "500", description = "Internal Server error")
     })

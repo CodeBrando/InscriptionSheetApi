@@ -1,7 +1,6 @@
 package com.brandocode.inscriptionsheetapi.controllers;
 
 import com.brandocode.inscriptionsheetapi.controllers.mappers.AssignmentApiMapper;
-import com.brandocode.inscriptionsheetapi.controllers.services.ApiService;
 import com.brandocode.inscriptionsheetapi.controllers.to.AssignmentTO;
 import com.brandocode.inscriptionsheetapi.controllers.to.ResponseTO;
 import com.brandocode.inscriptionsheetapi.services.AssignmentService;
@@ -23,7 +22,6 @@ public class AssignmentController implements IAssignmentController{
     @Autowired
     AssignmentService assignmentService;
 
-    ApiService apiService;
 
     @Override
     public ResponseEntity<ResponseTO> createAssignment(AssignmentTO assignmentTO){
