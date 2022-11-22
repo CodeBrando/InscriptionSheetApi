@@ -46,7 +46,7 @@ public class CareerController implements ICareerController{
     }
 
     @Override
-    public ResponseEntity<?> getCareerByCareerCode(String careerCode){
+    public ResponseEntity<?> findCareerByCareerCode(String careerCode){
         log.info("STARTING TO LOOK FOT THE DESIRED CAREER...");
         ResponseEntity<?> response;
         try{

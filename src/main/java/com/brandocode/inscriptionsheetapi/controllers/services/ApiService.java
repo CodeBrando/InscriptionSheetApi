@@ -6,15 +6,11 @@ import com.brandocode.inscriptionsheetapi.controllers.to.AssignmentTO;
 import com.brandocode.inscriptionsheetapi.controllers.to.CareerTO;
 import com.brandocode.inscriptionsheetapi.controllers.to.StudentTO;
 import com.brandocode.inscriptionsheetapi.exceptions.AssignmentDoesNotExistByName;
-import com.brandocode.inscriptionsheetapi.models.de.AssignmentDE;
 import com.brandocode.inscriptionsheetapi.services.AssignmentService;
 import com.brandocode.inscriptionsheetapi.services.CareerService;
-import com.brandocode.inscriptionsheetapi.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -28,9 +24,9 @@ public class ApiService {
 
     public void assignAssignments(CareerTO careerTO, String assignment1, String assignment2, String assignment3)
     throws AssignmentDoesNotExistByName {
-        AssignmentTO firstAssignment = AssignmentApiMapper.convertBOToTO(assignmentService.findAssignment(assignment1));
-        AssignmentTO secondAssignment = AssignmentApiMapper.convertBOToTO(assignmentService.findAssignment(assignment2));
-        AssignmentTO thirdAssignment = AssignmentApiMapper.convertBOToTO(assignmentService.findAssignment(assignment3));
+        AssignmentTO firstAssignment = AssignmentApiMapper.convertBOToTO(assignmentService.findAssignmentByName(assignment1));
+        AssignmentTO secondAssignment = AssignmentApiMapper.convertBOToTO(assignmentService.findAssignmentByName(assignment2));
+        AssignmentTO thirdAssignment = AssignmentApiMapper.convertBOToTO(assignmentService.findAssignmentByName(assignment3));
         careerTO.setAssignments(List.of(firstAssignment, secondAssignment, thirdAssignment));
     }
 

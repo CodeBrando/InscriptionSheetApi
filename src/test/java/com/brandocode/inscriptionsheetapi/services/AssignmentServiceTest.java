@@ -87,13 +87,38 @@ public class AssignmentServiceTest {
     }
 
     @Test
-    void itShouldThrowWhenAssignmentDoesNotExistTest() {
+    void itShouldFindAssignmentByNameTest(){
+        //given
+        AssignmentDE assignment = TestUtils.getAssignmentDE();
+        //when
+        given(assignmentRepository.findAssignmentByName(assignment.getName())).willReturn(Optional.of(assignment));
+        underTest.findAssignmentByName(assignment.getName());
+        //then
+        ArgumentCaptor<String> assignmentNameArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        verify(assignmentRepository).findAssignmentByName(assignmentNameArgumentCaptor.capture());
+        String capturedName = assignmentNameArgumentCaptor.getValue();
+        assertThat(capturedName).isEqualTo(assignment.getName());
+        verify(assignmentRepository).findAssignmentByName(assignment.getName());
+    }
+
+    @Test
+    void itShouldThrowWhenAssignmentWithProvidedAssignmentCodeDoesNotExistTest() {
         //given
         AssignmentDE assignment = AssignmentMapper.convertBOToDE(TestUtils.getAssignmentBO());
         //when
         //then
         assertThrows(EntityNotFoundException.class, ()-> underTest.findAssignmentByAssignmentCode(assignment.getAssignmentCode()),
                 "Assignment with assignment code " +assignment.getAssignmentCode()+ " does not exist.");
+    }
+
+    @Test
+    void itShouldThrowWhenAssignmentWithProvidedNameDoesNotExistTest() {
+        //given
+        AssignmentDE assignment = TestUtils.getAssignmentDE();
+        //when
+        //then
+        assertThrows(EntityNotFoundException.class, ()-> underTest.findAssignmentByName(assignment.getName()),
+                "Assignment with name " +assignment.getName()+ " does not exist.");
     }
 
     @Test

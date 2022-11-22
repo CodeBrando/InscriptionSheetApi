@@ -40,7 +40,7 @@ public interface ICareerController {
     })
     @Operation(summary = "Obtain the career with the given career code")
     @GetMapping(value = "/{careerCode}", produces = APPLICATION_JSON)
-    ResponseEntity<?> getCareerByCareerCode(@ApiParam(value = "Career code of the career to find") @PathVariable("careerCode") String careerCode);
+    ResponseEntity<?> findCareerByCareerCode(@ApiParam(value = "Career code of the career to find") @PathVariable("careerCode") String careerCode);
 
     @ApiResponses(value={
             @ApiResponse(responseCode = "202", description = "Created"),

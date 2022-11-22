@@ -34,10 +34,11 @@ public class StudentController implements IStudentController{
         try {
             apiService.assignCareer(student, careerCode);
             student.setStudentCode(UUID.randomUUID().toString());
+            studentService.saveStudent(StudentApiMapper.convertTOToBO(student));
             response = new ResponseEntity<>(ResponseTO.builder().message(HttpStatus.CREATED.name()).build(), HttpStatus.CREATED);
             log.info("STUDENT CREATED SUCCESSFULLY!");
-        } catch(EntityExistsException e){
-            log.error("SOMETHING HAS GONE WRONG WHILE CREATING THE STUDENT.");
+        } catch(EntityExistsException | EntityNotFoundException e){
+            log.error("SOMETHING HAS GONE WRONG WHILE CREATING THE STUDENT: " + e);
             response = new ResponseEntity<>(ResponseTO.builder().message(e.getMessage()).build(), HttpStatus.BAD_REQUEST);
         }
         return response;

@@ -26,10 +26,6 @@ public class CareerService {
         return CareerMapper.convertDEListToBOList(repository.findAll());
     }
 
-    public void findCareerByName(String name){
-        repository.findCareerByName(name);
-    }
-
     public CareerBO findCareerByCareerCode(String careerCode) throws EntityNotFoundException {
         return CareerMapper.convertDEToBO(repository.findByCareerCode(careerCode)
                 .orElseThrow(() -> new EntityNotFoundException("Career with career code " +careerCode+ " does not exist.")));
