@@ -22,7 +22,7 @@ public class ApiService {
     @Autowired
     AssignmentService assignmentService;
 
-    public void assignAssignments(CareerTO careerTO, String assignment1, String assignment2, String assignment3)
+    public void setAssignmentList(CareerTO careerTO, String assignment1, String assignment2, String assignment3)
     throws AssignmentDoesNotExistByName {
         AssignmentTO firstAssignment = AssignmentApiMapper.convertBOToTO(assignmentService.findAssignmentByName(assignment1));
         AssignmentTO secondAssignment = AssignmentApiMapper.convertBOToTO(assignmentService.findAssignmentByName(assignment2));
@@ -30,8 +30,10 @@ public class ApiService {
         careerTO.setAssignments(List.of(firstAssignment, secondAssignment, thirdAssignment));
     }
 
+
     public void assignCareer(StudentTO student, String careerCode){
         CareerTO career = CareerApiMapper.convertBOToTO(careerService.findCareerByCareerCode(careerCode));
         student.setCareer(career);
     }
 }
+

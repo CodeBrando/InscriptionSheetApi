@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface IAssignmentRepository extends JpaRepository<AssignmentDE, Long> {
 
-    Optional<AssignmentDE> findAssignmentByName(String name);
+    Optional<AssignmentDE> findByName(String name);
 
     Optional<AssignmentDE> findByAssignmentCode(String assignmentCode);
 

@@ -5,12 +5,10 @@ import com.brandocode.inscriptionsheetapi.controllers.to.CareerTO;
 import com.brandocode.inscriptionsheetapi.controllers.to.ResponseTO;
 import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 
 @RequestMapping("/api/v1/careers")

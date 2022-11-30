@@ -4,10 +4,10 @@ import com.brandocode.inscriptionsheetapi.controllers.to.ResponseTO;
 import com.brandocode.inscriptionsheetapi.controllers.to.StudentTO;
 import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -25,7 +25,7 @@ public interface IStudentController {
     @Operation(summary = "Creates a new student")
     @PostMapping(value = "/{careerCode}" , consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
     ResponseEntity<ResponseTO> createStudent(@ApiParam(value = "Student to create" ,required=true )
-                                             @Valid @RequestBody StudentTO student, @PathVariable("studentCode") String careerCode);
+                                             @Valid @RequestBody StudentTO student, @PathVariable("careerCode") String careerCode);
 
 
     @ApiResponses(value = {

@@ -39,7 +39,7 @@ public class StudentDE {
     @Column(name = "STUDENT_CODE")
     private String studentCode;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "CAREER", referencedColumnName = "ID")
     private CareerDE career;
 }

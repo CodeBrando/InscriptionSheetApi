@@ -2,15 +2,11 @@ package com.brandocode.inscriptionsheetapi.controllers;
 
 import com.brandocode.inscriptionsheetapi.TestUtils;
 import com.brandocode.inscriptionsheetapi.controllers.mappers.CareerApiMapper;
-import com.brandocode.inscriptionsheetapi.controllers.mappers.StudentApiMapper;
 import com.brandocode.inscriptionsheetapi.controllers.services.ApiService;
 import com.brandocode.inscriptionsheetapi.controllers.to.CareerTO;
-import com.brandocode.inscriptionsheetapi.controllers.to.StudentTO;
 import com.brandocode.inscriptionsheetapi.exceptions.AssignmentDoesNotExistByName;
 import com.brandocode.inscriptionsheetapi.models.bo.CareerBO;
-import com.brandocode.inscriptionsheetapi.models.bo.StudentBO;
 import com.brandocode.inscriptionsheetapi.services.CareerService;
-import com.brandocode.inscriptionsheetapi.services.StudentService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -46,7 +42,7 @@ public class CareerControllerTest {
         //given
         CareerTO career = TestUtils.getCareerTO();
         //when
-        Mockito.doNothing().when(apiService).assignAssignments(career, "firstAssignment", "secondAssignment", "thirdAssignment");
+        Mockito.doNothing().when(apiService).setAssignmentList(career, "firstAssignment", "secondAssignment", "thirdAssignment");
         Mockito.doNothing().when(careerService).saveCareer(any(CareerBO.class));
         //then
         ResponseEntity<?> result = careerController.createCareer(career, "firstAssignment", "secondAssignment", "thirdAssignment");
@@ -59,7 +55,7 @@ public class CareerControllerTest {
         CareerTO career = TestUtils.getCareerTO();
         //when
         Mockito.doThrow(new AssignmentDoesNotExistByName("firstAssignment"))
-                .when(apiService).assignAssignments(career, "firstAssignment", "secondAssignment", "thirdAssignment");
+                .when(apiService).setAssignmentList(career, "firstAssignment", "secondAssignment", "thirdAssignment");
         //then
         ResponseEntity<?> result = careerController.createCareer(career, "firstAssignment", "secondAssignment", "thirdAssignment");
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
@@ -71,7 +67,7 @@ public class CareerControllerTest {
         CareerTO career = TestUtils.getCareerTO();
         //when
         Mockito.doNothing()
-                .when(apiService).assignAssignments(career, "firstAssignment", "secondAssignment", "thirdAssignment");
+                .when(apiService).setAssignmentList(career, "firstAssignment", "secondAssignment", "thirdAssignment");
         Mockito.doThrow(new EntityExistsException()).when(careerService).saveCareer(any(CareerBO.class));
         //then
         ResponseEntity<?> result = careerController.createCareer(career, "firstAssignment", "secondAssignment", "thirdAssignment");

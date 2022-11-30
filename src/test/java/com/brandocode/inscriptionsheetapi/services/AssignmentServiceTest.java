@@ -91,14 +91,14 @@ public class AssignmentServiceTest {
         //given
         AssignmentDE assignment = TestUtils.getAssignmentDE();
         //when
-        given(assignmentRepository.findAssignmentByName(assignment.getName())).willReturn(Optional.of(assignment));
+        given(assignmentRepository.findByName(assignment.getName())).willReturn(Optional.of(assignment));
         underTest.findAssignmentByName(assignment.getName());
         //then
         ArgumentCaptor<String> assignmentNameArgumentCaptor = ArgumentCaptor.forClass(String.class);
-        verify(assignmentRepository).findAssignmentByName(assignmentNameArgumentCaptor.capture());
+        verify(assignmentRepository).findByName(assignmentNameArgumentCaptor.capture());
         String capturedName = assignmentNameArgumentCaptor.getValue();
         assertThat(capturedName).isEqualTo(assignment.getName());
-        verify(assignmentRepository).findAssignmentByName(assignment.getName());
+        verify(assignmentRepository).findByName(assignment.getName());
     }
 
     @Test

@@ -28,7 +28,7 @@ public class CareerDE {
     @Column(name = "CAREER_CODE")
     private String careerCode;
 
-    @OneToMany
+    @ManyToMany
     @JoinColumn(name = "ASSIGNMENT_DATA", referencedColumnName = "ID")
     private List<AssignmentDE> assignments;
 }

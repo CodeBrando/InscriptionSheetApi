@@ -26,7 +26,7 @@ public class AssignmentService {
      }
 
      public AssignmentBO findAssignmentByName(String name){
-        return AssignmentMapper.convertDEToBO(repository.findAssignmentByName(name)
+        return AssignmentMapper.convertDEToBO(repository.findByName(name)
                 .orElseThrow(() -> new EntityNotFoundException("Assignment with name " +name+ " does not exist.")));
      }
 

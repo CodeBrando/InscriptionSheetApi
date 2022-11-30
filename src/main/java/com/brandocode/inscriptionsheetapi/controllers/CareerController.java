@@ -24,6 +24,7 @@ public class CareerController implements ICareerController{
     @Autowired
     CareerService careerService;
 
+    @Autowired
     ApiService apiService;
 
     @Override
@@ -31,7 +32,7 @@ public class CareerController implements ICareerController{
         log.info("STARTING TO CREATE CAREER...");
         ResponseEntity<ResponseTO> response;
         try{
-            apiService.assignAssignments(careerTO, assignment1, assignment2, assignment3);
+            apiService.setAssignmentList(careerTO, assignment1, assignment2, assignment3);
             careerTO.setCareerCode(UUID.randomUUID().toString());
             careerService.saveCareer(CareerApiMapper.convertTOToBO(careerTO));
             response = new ResponseEntity<>(ResponseTO.builder().message(HttpStatus.OK.name()).build(), HttpStatus.OK);
